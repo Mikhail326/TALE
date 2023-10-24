@@ -1,0 +1,161 @@
+.stages {
+  &__item {
+    padding: 0 15px;
+
+    @media (min-width: 768px) {
+      padding: 0 30px;
+    }
+
+    &:nth-child(1) {
+      background: $stage-bg-1;
+    }
+    &:nth-child(2) {
+      background: $stage-bg-2;
+    }
+    &:nth-child(3) {
+      background: $stage-bg-3;
+    }
+    &:nth-child(4) {
+      background: $stage-bg-4;
+    }
+
+    &-image {
+      width: 270px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+
+      @media(min-width: 768px) {
+        width: 350px;
+        order: 2;
+      }
+    }
+
+    &-title {
+      position: relative;
+
+      @media (min-width: 768px) {
+        max-width: 1050px;
+        margin: 0 auto;
+      }
+
+      @media (min-width: 1000px) {
+        cursor: pointer;
+      }
+    }
+
+    &-icon {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $light;
+      border-radius: 50%;
+      position: absolute;
+      top: calc(50% - 18px);
+      right: 0;
+
+      & span {
+        display: block;
+        width: 18px;
+        height: 3px;
+        background: $dark;
+        border-radius: 10px;
+        position: relative;
+        opacity: 1;
+        transition: opacity 0.12s ease;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: calc(50% - 9px);
+          left: calc(50% - 1.5px);
+          width: 3px;
+          height: 18px;
+          background: $dark;
+          border-radius: 10px;
+          opacity: 1;
+          transition: 0.12s ease;
+        }
+      }
+    }
+
+    &-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.12s ease;
+
+      & p {
+        @include text;
+      }
+
+      @media(min-width: 768px) {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        max-width: 1050px;
+        margin: 0 auto;
+      }
+    }
+
+    &-text {
+      & p {
+        @include text;
+      }
+
+      & ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        
+        & li {
+          display: inline-block;
+          padding: 10px 14px 10px 34px;
+          border-radius: 49px;
+          background: $light;
+          position: relative;
+          color: $stage-text;
+          font-size: 15px;
+          font-weight: 400;
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: calc(50% - 4.5px);
+            left: 14px;
+            background-image: url(../img/Vector.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 12px;
+            height: 9px;
+          }
+        }
+      }
+    }
+
+    &-btn {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin: 24px 0;
+
+      & span {
+        color: $dark;
+        font-size: 17px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.active .stages__item-icon span::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.active h3 {
+  color: $dark;
+}
